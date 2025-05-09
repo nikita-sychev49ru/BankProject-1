@@ -11,4 +11,4 @@ from widget import mask_account_card, get_date
 # print(mask_account_card(input("Введите банковский продукт: ")))
 
 #Пользовател вводит дату и получает отформатированный вариант
-print(get_date(input("Введите дату в формате(2024-03-11T02:26:18.671407): ")))
+# print(get_date(input("Введите дату в формате(2024-03-11T02:26:18.671407): ")))
