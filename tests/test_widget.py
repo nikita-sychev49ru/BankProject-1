@@ -39,7 +39,7 @@ def test_mask_account_card_empty() -> None:
         mask_account_card("")
 
 
-def test_get_date(valid_date: str) -> None:
+def test_get_date_valid(valid_date: str) -> None:
     """Тест на проверку валидной даты"""
 
     assert get_date(valid_date) == "11.03.2024"
@@ -52,7 +52,7 @@ def test_get_date_empty() -> None:
         get_date("")
 
 
-def test_get_date_isdigit(not_valid_date: str) -> None:
+def test_get_date_invalid(not_valid_date: str) -> None:
     """Тест на проверку невалидной даты"""
 
     with pytest.raises(

@@ -32,7 +32,7 @@ def test_filter_by_state(
     assert result == expected
 
 
-def test_empty_list() -> None:
+def test_empty_list_by_state() -> None:
     """Тест с пустым списком операций"""
 
     with pytest.raises(ValueError, match="Передан пустой список операций"):
