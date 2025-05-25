@@ -19,7 +19,7 @@ def get_transactions(filepath: str) -> list[Any] | None | Any:
         else:
             return []
 
-
+# Для тестирования
 utils_dir = os.path.dirname(__file__)
 data_path = os.path.join(utils_dir, "..", "data", "operations.json")
 print(get_transactions(data_path))
