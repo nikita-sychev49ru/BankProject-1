@@ -1,6 +1,7 @@
-import pytest
 import os
+
 from src.utils import get_transactions
+
 
 def test_get_transactions1() -> None:
     """Тест для функции чтения транзакций
