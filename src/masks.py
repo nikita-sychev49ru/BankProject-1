@@ -62,10 +62,13 @@ def get_mask_account(number_acc: str) -> str:
         masks_logger.error("Входные данные имеют неверный формат!")
         raise AttributeError("На номере счета символы отсутствуют, введите числа") from e
 
-if __name__ == "__main__":
-    # print(get_mask_card_number("1596837868705199"))
-    # print(get_mask_card_number("159683786870519"))
-    # print(get_mask_card_number(1596837868705199))
-    print(get_mask_account("12751596837868705199"))
-    print(get_mask_account("15968378687051999999"))
-    print(get_mask_account(1596837868705199))
+
+# Для тестирования
+# -------------------------------------------------------------------------------------------------
+# if __name__ == "__main__":
+#     print(get_mask_card_number("1596837868705199"))
+#     print(get_mask_card_number("159683786870519"))
+#     print(get_mask_card_number(1596837868705199))
+#     print(get_mask_account("12751596837868705199"))
+#     print(get_mask_account("15968378687051999999"))
+#     print(get_mask_account(1596837868705199))

@@ -8,7 +8,7 @@ from src.external_api import get_amount_transaction
 
 
 @patch("requests.get")
-def test_get_amount_transaction1(mock_get_amount: Any) ->None:
+def test_get_amount_transaction1(mock_get_amount: Any) -> None:
     """Тест для функции конвертации суммы в рублях - успешная отработка"""
 
     mock_get_amount.return_value.json.return_value = {
