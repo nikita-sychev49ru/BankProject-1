@@ -164,3 +164,8 @@ def transaction_descriptions_or_not() -> list:
         {"id": 939719570, "code": "USD"},
         {"id": 939719577, "currency_code": "USD", "description": "Перевод со счета на счет"},
     ]
+
+
+@pytest.fixture
+def make_csv_transaction() -> list:
+    return [{"id": "650703", "state": "EXECUTED", "date": "2023-09-05T11:30:32Z"}]

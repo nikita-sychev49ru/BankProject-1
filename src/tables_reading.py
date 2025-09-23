@@ -10,6 +10,7 @@ def get_transactions_csv(file_path: str | None = None) -> Any:
     if not file_path:
         utils_dir = os.path.dirname(os.path.abspath(__file__))
         file_path = os.path.join(utils_dir, "..", "data", "transactions.csv")
+
     try:
         list_transactions_csv = []
         with open(file_path, "r", encoding="utf-8") as file:
@@ -37,7 +38,7 @@ def get_transactions_xlsx(file_path: str | None = None) -> Any:
     except FileNotFoundError:
         print("Файл не найден!")
     except Exception:
-        print("Данные имеют неверный формат!")
+        print("Данные некорректны!")
 
 
 # Для тестирования
