@@ -8,7 +8,7 @@ from src.tables_reading import get_transactions_csv, get_transactions_xlsx
 
 
 def test_get_transactions_csv1(make_csv_transaction: dict) -> None:
-    """тест для функции, считывающей транзакции из файла .csv - норма"""
+    """Тест для функции, считывающей транзакции из файла .csv - норма"""
     csv_content = """id,state,date
 650703,EXECUTED,2023-09-05T11:30:32Z"""
     with patch("builtins.open", mock_open(read_data=csv_content)):
@@ -17,7 +17,7 @@ def test_get_transactions_csv1(make_csv_transaction: dict) -> None:
 
 
 def test_get_transactions_csv2(capsys: pytest.CaptureFixture[str]) -> None:
-    """тест для функции, считывающей транзакции из файла .csv -
+    """Тест для функции, считывающей транзакции из файла .csv -
     данные не являются словарем"""
     csv_content = """date"""
     expect_result = "Данные некорректны!"
@@ -28,7 +28,7 @@ def test_get_transactions_csv2(capsys: pytest.CaptureFixture[str]) -> None:
 
 
 def test_get_transactions_csv3(capsys: pytest.CaptureFixture[str]) -> None:
-    """тест для функции, считывающей транзакции из файла .csv -
+    """Тест для функции, считывающей транзакции из файла .csv -
     файл или папка не найдены"""
     get_transactions_csv("../date/transactions.csv")
     print_result = capsys.readouterr()
@@ -37,7 +37,7 @@ def test_get_transactions_csv3(capsys: pytest.CaptureFixture[str]) -> None:
 
 
 def test_get_transactions_csv4(capsys: pytest.CaptureFixture[str]) -> None:
-    """тест для функции, считывающей транзакции из файла .csv -
+    """Тест для функции, считывающей транзакции из файла .csv -
     файл имеет формат, отличный от .csv"""
     file_dir = os.path.dirname(os.path.abspath(__file__))
     file_path = os.path.join(file_dir, "..", "data", "example.json")
@@ -48,7 +48,7 @@ def test_get_transactions_csv4(capsys: pytest.CaptureFixture[str]) -> None:
 
 
 def test_get_transactions_xlsx1() -> None:
-    """тест для функции, считывающей транзакции из файла .xlsx - норма"""
+    """Тест для функции, считывающей транзакции из файла .xlsx - норма"""
     data_frame = pd.DataFrame({"name": ["Ann", "Bob"], "age": [25, 31], "city": ["NY", "LA"]})
     with patch("pandas.read_excel", return_value=data_frame):
         result = get_transactions_xlsx()
@@ -56,7 +56,7 @@ def test_get_transactions_xlsx1() -> None:
 
 
 def test_get_transactions_xlsx2(capsys: pytest.CaptureFixture[str]) -> None:
-    """тест для функции, считывающей транзакции из файла .xlsx -
+    """Тест для функции, считывающей транзакции из файла .xlsx -
     файл или папка не найдены"""
     get_transactions_xlsx("../date/transactions_excel.xlsx")
     print_result = capsys.readouterr()
@@ -65,7 +65,7 @@ def test_get_transactions_xlsx2(capsys: pytest.CaptureFixture[str]) -> None:
 
 
 def test_get_transactions_xlsx3(capsys: pytest.CaptureFixture[str]) -> None:
-    """тест для функции, считывающей транзакции из файла .xlsx -
+    """Тест для функции, считывающей транзакции из файла .xlsx -
     файл имеет формат, отличный от .xlsx"""
     file_dir = os.path.dirname(os.path.abspath(__file__))
     file_path = os.path.join(file_dir, "..", "data", "example.json")
