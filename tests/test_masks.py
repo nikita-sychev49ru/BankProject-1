@@ -20,7 +20,7 @@ def test_get_mask_card_number(value: str, expected: str) -> None:
         with pytest.raises(ValueError, match=expected):
             get_mask_card_number(value)
     else:
-        with pytest.raises(TypeError, match=expected):
+        with pytest.raises(AttributeError, match=expected):
             get_mask_card_number(value)
 
 
@@ -41,5 +41,5 @@ def test_get_mask_account(value: str, expected: str) -> None:
         with pytest.raises(ValueError, match=expected):
             get_mask_account(value)
     else:
-        with pytest.raises(TypeError, match=expected):
+        with pytest.raises(AttributeError, match=expected):
             get_mask_account(value)
