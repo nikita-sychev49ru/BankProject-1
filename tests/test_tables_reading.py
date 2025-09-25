@@ -9,8 +9,8 @@ from src.tables_reading import get_transactions_csv, get_transactions_xlsx
 
 def test_get_transactions_csv1(make_csv_transaction: dict) -> None:
     """Тест для функции, считывающей транзакции из файла .csv - норма"""
-    csv_content = """id,state,date
-650703,EXECUTED,2023-09-05T11:30:32Z"""
+    csv_content = """id;state;date
+650703;EXECUTED;2023-09-05T11:30:32Z"""
     with patch("builtins.open", mock_open(read_data=csv_content)):
         result = get_transactions_csv()
     assert result == make_csv_transaction

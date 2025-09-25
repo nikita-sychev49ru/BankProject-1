@@ -48,14 +48,10 @@ def test_get_date_valid(valid_date: str) -> None:
 def test_get_date_empty() -> None:
     """Тест на проверку пустой даты"""
 
-    with pytest.raises(ValueError, match="Дата не может быть пустой"):
-        get_date("")
+    assert get_date('') == 'Проверьте правильность ввода!'
 
 
 def test_get_date_invalid(not_valid_date: str) -> None:
     """Тест на проверку невалидной даты"""
 
-    with pytest.raises(
-        TypeError, match=r"Введите дату в корректном формате \(например, " r'"2024-03-11" или "2024-03-11T02:26:18"\)'
-    ):
-        get_date(not_valid_date)
+    assert get_date(not_valid_date) == 'Проверьте правильность ввода!'

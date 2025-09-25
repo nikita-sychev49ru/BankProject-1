@@ -57,6 +57,11 @@ def main() -> None:
         => """
         )
         filtered_transactions = sort_by_date(filtered_transactions, sort=bool(flow_check))
+    print(f"Тип - {type(filtered_transactions)}")
+    print(filtered_transactions)
+    print(filtered_transactions[0])
+    print(filtered_transactions[1])
+    print(filtered_transactions[2])
 
 
     currency_check = input(
@@ -105,3 +110,6 @@ def main() -> None:
 
 if __name__ == "__main__":
     main()
+    # transactions = get_transactions_optional_format()
+    # filtered_list = filter_by_state(transactions, "EXECUTED")
+    # print(list(filter_by_currency(transactions, currency="sdasadsad")))
