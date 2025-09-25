@@ -15,7 +15,7 @@ def get_transactions_csv(file_path: str | None = None) -> Any:
     try:
         list_transactions_csv = []
         with open(file_path, "r", encoding="utf-8") as file:
-            content = csv.DictReader(file)
+            content = csv.DictReader(file, delimiter=";")
             for row in content:
                 list_transactions_csv.append(row)
             if len(list_transactions_csv) != 0:
