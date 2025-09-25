@@ -31,14 +31,11 @@ def mask_account_card(account_card: str) -> str:
         raise ValueError("Длина номера банковской карты должна быть равна 16")
 
 
-def get_date(date_str: str) -> str:
+def get_date(input_date: str) -> str:
     """Функция обработки даты"""
 
-    if not date_str:
-        raise ValueError("Дата не может быть пустой")
-
     try:
-        dt = datetime.fromisoformat(date_str)
-        return dt.strftime("%d.%m.%Y")
+        formated_date = datetime.strptime(input_date[:10], "%Y-%m-%d")
+        return f"{formated_date.day:02}.{formated_date.month:02}.{formated_date.year}"
     except ValueError:
-        raise TypeError('Введите дату в корректном формате (например, "2024-03-11" или "2024-03-11T02:26:18")')
+        return "Проверьте правильность ввода!"

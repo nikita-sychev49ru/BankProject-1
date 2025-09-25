@@ -3,7 +3,9 @@ import pytest
 from src.generators import card_number_generator, filter_by_currency, transaction_descriptions
 
 
-@pytest.mark.parametrize("currency, expected", [("USD", "Отсутствуют данные!"), ("RUB", "Отсутствуют данные!")])
+@pytest.mark.parametrize(
+    "currency, expected", [("USD", "Отсутствуют данные для обработки"), ("RUB", "Отсутствуют данные для обработки")]
+)
 def test_filter_by_currency_empty(transactions_empty: list, currency: str, expected: list) -> None:
     """Тест на пустой список транзакций"""
 
@@ -13,7 +15,10 @@ def test_filter_by_currency_empty(transactions_empty: list, currency: str, expec
 
 @pytest.mark.parametrize(
     "currency, expected",
-    [("EUR", "Транзакции с данной валютой отсутствуют"), ("BTC", "Транзакции с данной валютой отсутствуют")],
+    [
+        ("EUR", "В списке отсутствуют транзакции с данной валютой"),
+        ("BTC", "В списке отсутствуют транзакции с данной валютой"),
+    ],
 )
 def test_filter_by_currency_not_code(transactions: list, currency: str, expected: list) -> None:
     """Тест на отсутствие заданной валюты"""
@@ -29,31 +34,37 @@ def test_filter_by_currency_not_code(transactions: list, currency: str, expected
             "USD",
             [
                 {
-                    "id": 939719570,
+                    "id": "41428829",
+                    "state": "EXECUTED",
+                    "date": "2019-07-03T18:35:29.512364",
+                    "amount": "8221.37",
+                    "currency_name": "USD",
+                    "currency_code": "USD",
+                    "from": "MasterCard 7158300734726758",
+                    "to": "Счет 35383033474447895560",
+                    "description": "Перевод организации",
+                },
+                {
+                    "id": "939719570",
                     "state": "EXECUTED",
                     "date": "2018-06-30T02:08:58.425572",
-                    "operationAmount": {"amount": "9824.07", "currency": {"name": "USD", "code": "USD"}},
-                    "description": "Перевод организации",
+                    "amount": "9824.07",
+                    "currency_name": "USD",
+                    "currency_code": "USD",
                     "from": "Счет 75106830613657916952",
                     "to": "Счет 11776614605963066702",
+                    "description": "Перевод организации",
                 },
                 {
-                    "id": 142264268,
+                    "id": "142264268",
                     "state": "EXECUTED",
                     "date": "2019-04-04T23:20:05.206878",
-                    "operationAmount": {"amount": "79114.93", "currency": {"name": "USD", "code": "USD"}},
-                    "description": "Перевод со счета на счет",
+                    "amount": "79114.93",
+                    "currency_name": "USD",
+                    "currency_code": "USD",
                     "from": "Счет 19708645243227258542",
                     "to": "Счет 75651667383060284188",
-                },
-                {
-                    "id": 895315941,
-                    "state": "EXECUTED",
-                    "date": "2018-08-19T04:27:37.904916",
-                    "operationAmount": {"amount": "56883.54", "currency": {"name": "USD", "code": "USD"}},
-                    "description": "Перевод с карты на карту",
-                    "from": "Visa Classic 6831982476737658",
-                    "to": "Visa Platinum 8990922113665229",
+                    "description": "Перевод со счета на счет",
                 },
             ],
         )

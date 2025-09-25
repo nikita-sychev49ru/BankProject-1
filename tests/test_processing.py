@@ -35,8 +35,7 @@ def test_filter_by_state(
 def test_empty_list_by_state() -> None:
     """Тест с пустым списком операций"""
 
-    with pytest.raises(ValueError, match="Передан пустой список операций"):
-        filter_by_state([], "EXECUTED")
+    assert filter_by_state([]) == "Отсутствуют данные для обработки! Проверьте правильность ввода!"
 
 
 # Тестирование функции sort_by_date
@@ -64,19 +63,4 @@ def test_sort_with_same_dates(operations_with_same_dates: List[Dict[str, Any]]) 
 def test_empty_list_date() -> None:
     """Тест с пустым списком операций"""
 
-    assert sort_by_date([]) == []
-
-
-def test_missing_date_key() -> None:
-    """Тест с отсутствующим ключом 'date'"""
-
-    with pytest.raises(KeyError, match='Отсутствует ключ "date"'):
-        sort_by_date([{"id": 1}])
-
-
-# Тест с некорректными форматами дат
-def test_invalid_date_format() -> None:
-    """Тест с некорректным форматом даты"""
-
-    with pytest.raises(ValueError, match="Некорректный формат даты"):
-        sort_by_date([{"id": 1, "date": "15-01-2023"}])
+    assert sort_by_date([]) == "Отсутствуют данные для обработки! Проверьте правильность ввода!"

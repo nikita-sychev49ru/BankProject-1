@@ -30,6 +30,7 @@ def test_log_error_console(capsys: pytest.CaptureFixture[str]) -> None:
     def add(x: int, y: int) -> int:
         return x + y
 
+    add("2", 3)
     captured = capsys.readouterr()
     output = captured.out.split("\n")
 
