@@ -37,4 +37,4 @@ def card_number_generator(start: int, stop: int) -> Any:
     else:
         for number in range(start, stop + 1):
             card_num = str(number).zfill(16)
-            yield " ".join([card_num[i: i + 4] for i in range(0, 16, 4)])
+            yield " ".join([card_num[i : i + 4] for i in range(0, 16, 4)])

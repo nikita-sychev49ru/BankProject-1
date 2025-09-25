@@ -57,12 +57,6 @@ def main() -> None:
         => """
         )
         filtered_transactions = sort_by_date(filtered_transactions, sort=bool(flow_check))
-    print(f"Тип - {type(filtered_transactions)}")
-    print(filtered_transactions)
-    print(filtered_transactions[0])
-    print(filtered_transactions[1])
-    print(filtered_transactions[2])
-
 
     currency_check = input(
         """Выводить только рублевые транзакции?
@@ -72,7 +66,6 @@ def main() -> None:
     )
     if bool(int(currency_check)):
         filtered_transactions = list(filter_by_currency(filtered_transactions, currency="RUB"))
-    print(filtered_transactions)
 
     search_check = input(
         """Отфильтровать список транзакций по определенному слову в описании?
@@ -110,6 +103,3 @@ def main() -> None:
 
 if __name__ == "__main__":
     main()
-    # transactions = get_transactions_optional_format()
-    # filtered_list = filter_by_state(transactions, "EXECUTED")
-    # print(list(filter_by_currency(transactions, currency="sdasadsad")))

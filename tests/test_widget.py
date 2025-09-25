@@ -48,10 +48,10 @@ def test_get_date_valid(valid_date: str) -> None:
 def test_get_date_empty() -> None:
     """Тест на проверку пустой даты"""
 
-    assert get_date('') == 'Проверьте правильность ввода!'
+    assert get_date("") == "Проверьте правильность ввода!"
 
 
 def test_get_date_invalid(not_valid_date: str) -> None:
     """Тест на проверку невалидной даты"""
 
-    assert get_date(not_valid_date) == 'Проверьте правильность ввода!'
+    assert get_date(not_valid_date) == "Проверьте правильность ввода!"

@@ -1,7 +1,11 @@
 from unittest.mock import patch
 
-from src.filtering_operations import get_count_category, get_transactions_optional_format, normalize_transaction, \
-    search_transactions
+from src.filtering_operations import (
+    get_count_category,
+    get_transactions_optional_format,
+    normalize_transaction,
+    search_transactions,
+)
 
 
 def test_get_transactions_optional_format1() -> None:
@@ -23,8 +27,10 @@ def test_get_transactions_optional_format1() -> None:
 def test_get_transactions_optional_format2() -> None:
     """Тест для функции чтения списка операций - норма, чтение CSV"""
 
-    with patch("builtins.input", return_value="2"), patch(
-            "src.filtering_operations.get_transactions_csv") as mock_get_ops:
+    with (
+        patch("builtins.input", return_value="2"),
+        patch("src.filtering_operations.get_transactions_csv") as mock_get_ops,
+    ):
         mock_get_ops.return_value = [{"id": 1}, {"id": 2}]
         result = get_transactions_optional_format()
         assert result[1] == {"id": 2}

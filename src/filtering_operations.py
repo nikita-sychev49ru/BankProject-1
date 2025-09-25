@@ -60,13 +60,13 @@ def normalize_transaction(transaction: Any) -> dict:
 
     # Обработка JSON формата
     if "operationAmount" in transaction:
-        normalized["id"] = str(transaction.get("id"))
+        normalized["id"] = transaction.get("id")
         normalized["state"] = transaction.get("state")
-        normalized["date"] = str(transaction.get("date"))
+        normalized["date"] = transaction.get("date")
 
         # Обрабатываем вложенные словари amount, currency
         op_amount = transaction.get("operationAmount", {})
-        normalized["amount"] = str(op_amount.get("amount", "0"))
+        normalized["amount"] = op_amount.get("amount", "0")
         currency = op_amount.get("currency", {})
         normalized["currency_name"] = currency.get("name")
         normalized["currency_code"] = currency.get("code")
@@ -77,14 +77,14 @@ def normalize_transaction(transaction: Any) -> dict:
 
     # Обработка XLSX формата
     else:
-        normalized["id"] = str(transaction.get("id")) if transaction.get("id") else ""
+        normalized["id"] = transaction.get("id") if transaction.get("id") else ""
         normalized["state"] = transaction.get("state")
         normalized["date"] = transaction.get("date")
 
         # Для amount: преобразуем в str, независимо от исходного типа
         amount = transaction.get("amount")
         if amount is not None:
-            normalized["amount"] = str(amount)
+            normalized["amount"] = amount
         else:
             normalized["amount"] = "0"
 
@@ -99,8 +99,8 @@ def normalize_transaction(transaction: Any) -> dict:
 
 def search_transactions(transactions: Any = None, target: Any = None) -> list:
     """Функция принимает список словарей с данными о банковских
-       операциях и строку поиска, а возвращает список словарей,
-       у которых в описании есть данная строка"""
+    операциях и строку поиска, а возвращает список словарей,
+    у которых в описании есть данная строка"""
 
     if not transactions or not target:
         transactions, target = get_transactions_optional_format(), input("Введите слово для поиска: ")

@@ -1,5 +1,5 @@
-from datetime import datetime
-from typing import Dict, List, Union
+from typing import List, Union
+
 from src.widget import get_date
 
 
